@@ -1,0 +1,28 @@
+@use 'variables' as *;
+
+@mixin mobile {
+  @media (max-width: #{$breakpoint-mobile - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $breakpoint-mobile) and (max-width: #{$breakpoint-tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin container {
+  width: min(calc(100% - 40px), $container);
+  margin-inline: auto;
+
+  @include mobile {
+    width: min(calc(100% - 28px), $container);
+  }
+}
