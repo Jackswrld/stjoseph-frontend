@@ -7,6 +7,7 @@ import SocietiesSection from '../components/home/SocietiesSection'
 import {
   eventsList,
   infoBarItems,
+  massSchedule,
   massToday,
   newsList,
   societiesList,
@@ -17,7 +18,7 @@ function Home() {
   return (
     <>
       <Hero />
-      <InfoBar items={infoBarItems} mass={massToday} />
+      <InfoBar items={infoBarItems} mass={massToday} schedule={massSchedule} />
       <div className="home-content">
         <div className="home-content__news-events">
           <NewsSection news={newsList} />

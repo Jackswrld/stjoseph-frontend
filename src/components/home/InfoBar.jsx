@@ -9,7 +9,7 @@ const icons = {
 }
 
 // Shows desktop contact highlights and the mobile Mass summary.
-function InfoBar({ items, mass }) {
+function InfoBar({ items, mass, schedule }) {
   return (
     <section className="info-bar" aria-label="Parish information">
       <div className="info-bar__mobile-card">
@@ -29,8 +29,8 @@ function InfoBar({ items, mass }) {
 
       <div className="info-bar__mobile-strip">
         <span>Church Opens 6:00 AM</span>
-        <span>Daily Mass 6:30 AM</span>
-        <span>Office Hours 9:00 AM</span>
+        <span>Daily Mass {schedule.weekday_masses[0].time}</span>
+        <span>Office Hours {schedule.office_hours.time}</span>
       </div>
 
       <div className="info-bar__desktop">

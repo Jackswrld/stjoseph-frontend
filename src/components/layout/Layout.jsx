@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import Footer from './Footer'
 import MobileTabBar from './MobileTabBar'
@@ -6,15 +7,19 @@ import ScrollToTop from './ScrollToTop'
 
 // Wraps every page with shared navigation, footer, and route content.
 function Layout() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const closeMenu = () => setIsMenuOpen(false)
+  const toggleMenu = () => setIsMenuOpen((current) => !current)
+
   return (
     <>
       <ScrollToTop />
-      <Navbar />
+      <Navbar isOpen={isMenuOpen} onClose={closeMenu} onToggle={toggleMenu} />
       <main className="site-main">
         <Outlet />
       </main>
       <Footer />
-      <MobileTabBar />
+      <MobileTabBar isMenuOpen={isMenuOpen} onMoreClick={toggleMenu} />
     </>
   )
 }

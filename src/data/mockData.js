@@ -3,9 +3,36 @@ import massImage from '../assets/images/mass announcement.png'
 import societiesImage from '../assets/images/societies.jpg'
 
 // Provisional shape. Will be replaced by API data. Names may change when the backend contract is finalized.
+export const churchInfo = {
+  name: 'St. Joseph Catholic Church',
+  tagline: 'Faith • Family • Community',
+  address: '412 Road, Gowon Estate, Ipaja-Lagos',
+  phone: '+234 801 234 5678',
+  email: 'info@stjosephcatholic.org',
+}
+
+export const massSchedule = {
+  sunday_masses: [
+    { label: 'First Mass', time: '6:30 AM' },
+    { label: 'Second Mass', time: '9:00 AM' },
+    { label: 'Evening Mass', time: '6:00 PM' },
+    { label: "Children's Mass", time: '9:30 AM - 11:00 AM' },
+  ],
+  weekday_masses: [
+    { label: 'Monday - Friday (Morning)', time: '6:30 AM' },
+    { label: 'Tuesday - Friday (Evening)', time: '6:00 PM' },
+    { label: 'Saturday', time: '7:00 AM' },
+  ],
+  office_hours: {
+    days: 'Monday - Thursday',
+    time: '9:00 AM - 1:00 PM',
+  },
+}
+
+// Will be calculated from the real time later.
 export const massToday = {
   date_label: 'Today, Sunday',
-  time: '8:30 AM',
+  time: massSchedule.sunday_masses[0].time,
   status: 'Live',
   location: 'Main Church',
 }
@@ -14,7 +41,10 @@ export const infoBarItems = [
   {
     id: 1,
     title: 'Mass Times',
-    text: 'Sunday: 6:30 AM, 8:30 AM and 10:30 AM',
+    text: `Sunday: ${massSchedule.sunday_masses
+      .filter((mass) => ['First Mass', 'Second Mass', 'Evening Mass'].includes(mass.label))
+      .map((mass) => mass.time)
+      .join(', ')}. Weekday: ${massSchedule.weekday_masses[0].time}`,
     link_label: 'View schedule',
     link_url: '/mass-sacraments',
     icon: 'calendar',
@@ -22,7 +52,7 @@ export const infoBarItems = [
   {
     id: 2,
     title: 'Church Location',
-    text: 'St. Joseph Catholic Church, Parish Road',
+    text: churchInfo.address,
     link_label: 'Get directions',
     link_url: '/contact',
     icon: 'map',
@@ -38,11 +68,47 @@ export const infoBarItems = [
   {
     id: 4,
     title: 'Contact Us',
-    text: 'Reach the parish office for enquiries and support',
+    text: `${churchInfo.phone} • ${churchInfo.email}`,
     link_label: 'Send message',
     link_url: '/contact',
     icon: 'phone',
   },
+]
+
+export const sacramentsList = [
+  {
+    id: 1,
+    slug: 'adoration',
+    name: 'Chapel of Adoration',
+    schedule: [
+      { label: 'Exposition', text: 'Monday - Friday 7:15 AM - 9:00 PM' },
+      { label: 'Benediction', text: 'Thursday 5:30 PM' },
+    ],
+  },
+  {
+    id: 2,
+    slug: 'communion-sick',
+    name: 'Communion for the Sick / Aged',
+    schedule: [{ text: 'Every Thursday - Friday 9:00 AM - 1:00 PM' }],
+  },
+  { id: 3, slug: 'confession', name: 'Confession', schedule: [{ text: 'Saturday 5:00 PM - 7:00 PM' }] },
+  { id: 4, slug: 'catechism', name: 'Catechism', schedule: [{ text: 'Saturday & Sunday 4:00 PM - 6:00 PM' }] },
+  { id: 5, slug: 'rica', name: 'R.I.C.A', schedule: [{ text: 'Saturday & Sunday 4:00 PM' }] },
+  {
+    id: 6,
+    slug: 'infant-baptism',
+    name: 'Infant Baptism & Pre-Baptism Preparation',
+    schedule: [{ text: '1st & 2nd Saturday of the month 4:00 PM' }],
+  },
+  { id: 7, slug: 'baptism', name: 'Baptism', schedule: [{ text: 'Last Saturday of the month 11:00 AM' }] },
+  { id: 8, slug: 'bible-study', name: 'Bible Study Class', schedule: [{ text: 'Wednesday 7:15 PM' }] },
+  {
+    id: 9,
+    slug: 'marriage-classes',
+    name: 'Marriage Classes',
+    schedule: [{ text: 'Every Sunday 4:00 PM - 6:00 PM' }],
+  },
+  { id: 10, slug: 'library', name: 'Library', schedule: [{ text: 'Monday - Friday 9:00 AM - 2:00 PM' }] },
 ]
 
 export const newsList = [

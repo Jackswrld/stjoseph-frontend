@@ -1,16 +1,15 @@
-import { CalendarDays, Church, Home, Info, UsersRound } from 'lucide-react'
+import { Church, Home, Info, Menu, Newspaper } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 
 const tabs = [
   { label: 'Home', path: '/', icon: Home },
   { label: 'About', path: '/about', icon: Info },
   { label: 'Mass', path: '/mass-sacraments', icon: Church },
-  { label: 'Societies', path: '/societies', icon: UsersRound },
-  { label: 'Events', path: '/events', icon: CalendarDays },
+  { label: 'News', path: '/parish-news', icon: Newspaper },
 ]
 
 // Gives mobile users fixed access to the most important pages.
-function MobileTabBar() {
+function MobileTabBar({ isMenuOpen, onMoreClick }) {
   return (
     <nav className="mobile-tab-bar" aria-label="Mobile quick navigation">
       {tabs.map((tab) => {
@@ -22,6 +21,16 @@ function MobileTabBar() {
           </NavLink>
         )
       })}
+      <button
+        className={isMenuOpen ? 'active' : ''}
+        type="button"
+        aria-label="Open more menu"
+        aria-expanded={isMenuOpen}
+        onClick={onMoreClick}
+      >
+        <Menu size={20} />
+        <span>More</span>
+      </button>
     </nav>
   )
 }

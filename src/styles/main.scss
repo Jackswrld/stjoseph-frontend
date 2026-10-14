@@ -12,6 +12,17 @@
   }
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -50,6 +61,16 @@
   left: 0;
   width: 100%;
   color: #fff;
+
+  &--solid {
+    position: sticky;
+    background: $color-navy;
+    box-shadow: 0 12px 28px rgba(15, 35, 71, 0.16);
+  }
+
+  &--transparent {
+    background: transparent;
+  }
 
   &__inner {
     @include container;
@@ -123,6 +144,7 @@
   }
 
   &__icon-button,
+  &__mobile-search,
   &__menu-button {
     display: inline-flex;
     align-items: center;
@@ -146,13 +168,14 @@
   }
 
   &__menu-button,
+  &__mobile-search,
   &__mobile-menu {
     display: none;
   }
 
   @include mobile {
-    position: fixed;
-    background: rgba(15, 35, 71, 0.92);
+    position: sticky;
+    background: rgba(15, 35, 71, 0.96);
     backdrop-filter: blur(14px);
 
     &__inner {
@@ -174,8 +197,13 @@
       display: none;
     }
 
+    &__mobile-search,
     &__menu-button {
       display: inline-flex;
+    }
+
+    &__mobile-search {
+      margin-left: auto;
     }
 
     &__mobile-menu {
@@ -315,6 +343,118 @@
   }
 }
 
+.page-hero {
+  position: relative;
+  min-height: 710px;
+  overflow: hidden;
+  color: #fff;
+
+  > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(10, 24, 50, 0.94), rgba(15, 35, 71, 0.66) 52%, rgba(15, 35, 71, 0.34)),
+      linear-gradient(0deg, rgba(10, 24, 50, 0.72), rgba(10, 24, 50, 0.18));
+  }
+
+  &__inner {
+    @include container;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 380px;
+    gap: 48px;
+    align-items: center;
+    min-height: inherit;
+    padding-top: 54px;
+  }
+
+  &__eyebrow {
+    margin-bottom: 14px;
+    color: $color-gold;
+    font-size: 0.82rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+  }
+
+  h1 {
+    max-width: 700px;
+    color: #fff;
+    font-size: clamp(3.35rem, 7vw, 5.8rem);
+  }
+
+  &__subtitle {
+    max-width: 650px;
+    margin-top: 22px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.14rem;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 34px;
+  }
+
+  &__quote {
+    align-self: end;
+    margin: 0 0 96px;
+    color: rgba(255, 255, 255, 0.88);
+    font-family: $font-heading;
+    font-size: 1.2rem;
+    font-style: italic;
+    line-height: 1.7;
+
+    cite {
+      display: block;
+      margin-top: 14px;
+      color: $color-gold;
+      font-family: $font-body;
+      font-size: 0.75rem;
+      font-style: normal;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+    }
+  }
+
+  @include mobile {
+    min-height: 650px;
+
+    &__inner {
+      display: flex;
+      align-items: center;
+      padding-top: 40px;
+    }
+
+    h1 {
+      font-size: 3.1rem;
+    }
+
+    &__subtitle {
+      font-size: 1rem;
+    }
+
+    &__actions {
+      align-items: stretch;
+      flex-direction: column;
+      max-width: 330px;
+    }
+
+    &__quote {
+      display: none;
+    }
+  }
+}
+
 .info-bar {
   @include container;
   position: relative;
@@ -437,6 +577,443 @@
         font-weight: 800;
         text-align: center;
       }
+    }
+  }
+}
+
+.schedule-overview {
+  @include container;
+  position: relative;
+  z-index: 4;
+  margin-top: -76px;
+
+  &__panel {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    overflow: hidden;
+    border-radius: $radius-card;
+    background: #fff;
+    box-shadow: $shadow-card;
+  }
+
+  @include tablet {
+    &__panel {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @include mobile {
+    margin-top: -72px;
+
+    &__panel {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      overflow: visible;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+  }
+}
+
+.schedule-card {
+  padding: 28px;
+  border-right: 1px solid $color-border;
+
+  &:last-child {
+    border-right: 0;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 14px;
+    color: $color-navy;
+    text-align: left;
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(25, 57, 99, 0.1);
+    color: $color-navy;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 1.38rem;
+    font-weight: 800;
+  }
+
+  &__chevron {
+    display: none;
+    margin-left: auto;
+    transition: transform 0.2s ease;
+  }
+
+  &__rows {
+    margin-top: 22px;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 0;
+    border-top: 1px solid $color-border;
+    color: $color-muted;
+    font-size: 0.93rem;
+
+    strong {
+      flex: 0 0 auto;
+      color: $color-navy;
+      text-align: right;
+    }
+  }
+
+  @include tablet {
+    border-right: 0;
+    border-bottom: 1px solid $color-border;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  @include mobile {
+    border: 1px solid rgba(231, 236, 243, 0.85);
+    border-radius: $radius-card;
+    padding: 0;
+    background: #fff;
+    box-shadow: 0 12px 30px rgba(15, 35, 71, 0.08);
+
+    &__header {
+      padding: 18px;
+    }
+
+    &__chevron {
+      display: block;
+    }
+
+    &__header[aria-expanded='true'] &__chevron {
+      transform: rotate(180deg);
+    }
+
+    &__rows {
+      display: none;
+      margin: 0;
+      padding: 0 18px 12px;
+
+      &--open {
+        display: block;
+      }
+    }
+  }
+}
+
+.sacraments-section {
+  @include container;
+  padding: 86px 0 70px;
+
+  &__header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 430px);
+    gap: 32px;
+    align-items: end;
+    margin-bottom: 34px;
+
+    p {
+      color: $color-muted;
+    }
+  }
+
+  &__title-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    h2 {
+      font-size: clamp(2rem, 3vw, 2.8rem);
+    }
+
+    span {
+      flex: 1;
+      max-width: 96px;
+      height: 3px;
+      border-radius: 999px;
+      background: $color-gold;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  @include tablet {
+    &__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @include mobile {
+    padding: 54px 0 42px;
+
+    &__header {
+      display: block;
+      margin-bottom: 18px;
+
+      p,
+      span {
+        display: none;
+      }
+    }
+
+    &__title-row h2 {
+      font-size: 1.85rem;
+    }
+
+    &__grid {
+      display: block;
+      overflow: hidden;
+      border: 1px solid rgba(231, 236, 243, 0.85);
+      border-radius: $radius-card;
+      background: #fff;
+      box-shadow: 0 12px 30px rgba(15, 35, 71, 0.08);
+    }
+  }
+}
+
+.sacrament-card {
+  min-height: 222px;
+  padding: 22px 18px;
+  border: 1px solid rgba(231, 236, 243, 0.85);
+  border-radius: $radius-card;
+  background: #fff;
+  box-shadow: 0 14px 34px rgba(15, 35, 71, 0.07);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 42px rgba(15, 35, 71, 0.11);
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 18px;
+    border-radius: 50%;
+    background: $color-navy;
+    color: $color-gold;
+  }
+
+  h3 {
+    min-height: 54px;
+    margin-bottom: 14px;
+    font-size: 1.14rem;
+  }
+
+  p {
+    margin-bottom: 9px;
+    color: $color-muted;
+    font-size: 0.86rem;
+    line-height: 1.45;
+
+    strong {
+      display: block;
+      margin-bottom: 3px;
+      color: $color-navy;
+      font-size: 0.74rem;
+    }
+  }
+
+  @include mobile {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 12px;
+    min-height: 0;
+    padding: 15px;
+    border: 0;
+    border-bottom: 1px solid $color-border;
+    border-radius: 0;
+    box-shadow: none;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    &__icon {
+      width: 38px;
+      height: 38px;
+      margin: 0;
+    }
+
+    h3 {
+      min-height: 0;
+      margin-bottom: 4px;
+      font-family: $font-body;
+      font-size: 0.96rem;
+    }
+
+    p {
+      margin-bottom: 3px;
+      font-size: 0.8rem;
+      white-space: nowrap;
+
+      strong {
+        display: inline;
+        margin-right: 5px;
+      }
+    }
+
+    &__schedule {
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      span {
+        color: $color-muted;
+      }
+    }
+  }
+}
+
+.priest-banner {
+  @include container;
+  padding-bottom: 84px;
+
+  &__desktop {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(280px, 0.9fr) minmax(260px, 1fr) 1px minmax(320px, 1.1fr);
+    align-items: center;
+    overflow: hidden;
+    min-height: 300px;
+    border-radius: $radius-card;
+    background: $color-navy;
+    color: #fff;
+  }
+
+  &__image {
+    position: relative;
+    height: 100%;
+
+    &::after {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(15, 35, 71, 0.12), $color-navy);
+      content: '';
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  blockquote {
+    margin: 0;
+    padding: 34px;
+    font-family: $font-heading;
+    font-size: 1.24rem;
+    font-style: italic;
+    line-height: 1.7;
+
+    cite {
+      display: block;
+      margin-top: 16px;
+      color: $color-gold;
+      font-family: $font-body;
+      font-size: 0.76rem;
+      font-style: normal;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+    }
+  }
+
+  &__divider {
+    width: 1px;
+    height: 170px;
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  &__content {
+    display: flex;
+    gap: 18px;
+    padding: 34px;
+
+    h2 {
+      color: #fff;
+      font-size: 1.65rem;
+    }
+
+    p {
+      margin: 12px 0 22px;
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 0.94rem;
+    }
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 54px;
+    height: 54px;
+    border: 1px solid rgba(246, 185, 59, 0.74);
+    border-radius: 50%;
+    color: $color-gold;
+  }
+
+  &__mobile {
+    display: none;
+  }
+
+  @include mobile {
+    padding-bottom: 46px;
+
+    &__desktop {
+      display: none;
+    }
+
+    &__mobile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 76px;
+      border-radius: $radius-card;
+      padding: 12px 16px;
+      background: $color-navy;
+      color: #fff;
+      font-weight: 800;
+
+      svg:last-child {
+        margin-left: auto;
+        color: $color-gold;
+      }
+    }
+
+    &__icon {
+      width: 42px;
+      height: 42px;
     }
   }
 }
@@ -812,16 +1389,28 @@
   &__inner {
     @include container;
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-columns: 1.4fr 1fr 1fr 1.25fr;
     gap: 32px;
-    padding: 54px 0 72px;
+    padding: 60px 0 46px;
   }
 
   h2,
   h3 {
-    margin-bottom: 14px;
+    position: relative;
+    margin-bottom: 24px;
     color: #fff;
     font-family: $font-body;
+
+    &::after {
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 42px;
+      height: 3px;
+      border-radius: 999px;
+      background: $color-gold;
+      content: '';
+    }
   }
 
   p,
@@ -835,10 +1424,55 @@
     color: $color-gold;
   }
 
+  &__brand {
+    img {
+      width: 62px;
+      height: 62px;
+      margin-bottom: 14px;
+      object-fit: contain;
+    }
+
+    p {
+      color: $color-gold;
+      font-weight: 800;
+    }
+  }
+
+  &__contact p {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+
+    svg {
+      flex: 0 0 auto;
+      color: $color-gold;
+    }
+  }
+
+  &__bottom {
+    @include container;
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 18px 0 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+    p {
+      margin: 0;
+      font-size: 0.86rem;
+    }
+  }
+
   @include mobile {
     &__inner {
       grid-template-columns: 1fr;
-      padding-bottom: 96px;
+      padding: 42px 0 26px;
+    }
+
+    &__bottom {
+      align-items: flex-start;
+      flex-direction: column;
+      padding-bottom: 100px;
     }
   }
 }
@@ -859,7 +1493,8 @@
     background: rgba(255, 255, 255, 0.96);
     box-shadow: 0 -12px 30px rgba(15, 35, 71, 0.1);
 
-    a {
+    a,
+    button {
       display: grid;
       place-items: center;
       gap: 3px;
@@ -871,6 +1506,10 @@
       &.active {
         color: $color-gold;
       }
+    }
+
+    button {
+      width: 100%;
     }
   }
 }
