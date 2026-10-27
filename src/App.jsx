@@ -8,6 +8,7 @@ import Home from './pages/Home'
 import MassSacraments from './pages/MassSacraments'
 import NotFound from './pages/NotFound'
 import ParishNews from './pages/ParishNews'
+import OurHistory from './pages/OurHistory'
 import Societies from './pages/Societies'
 
 // Defines the website routes inside the shared layout.
@@ -18,6 +19,7 @@ function App() {
         <Route element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
+          <Route path="about/history" element={<OurHistory />} />
           <Route path="mass-sacraments" element={<MassSacraments />} />
           <Route path="parish-news" element={<ParishNews />} />
           <Route path="societies" element={<Societies />} />

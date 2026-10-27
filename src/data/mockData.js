@@ -11,6 +11,35 @@ export const churchInfo = {
   email: 'info@stjosephcatholic.org',
 }
 
+export const aboutHero = {
+  eyebrow: 'ABOUT OUR CHURCH', title: 'Our Church Family',
+  subtitle: 'St. Joseph Catholic Church is more than a building; we are a family of faith, united in Christ, guided by the Church and committed to spreading His love in our community.',
+  quote_text: 'For where two or three are gathered in my name, there am I among them.', quote_source: 'Matthew 18:20',
+}
+export const clergyIntro = 'Our parish is guided by the leadership of our priests, who shepherd us in faith, hope and love.'
+export const clergyList = [
+  { id: 1, full_name: 'Rev. Fr. Michael Okafor', role_type: 'parish_priest', badge_label: 'Parish Priest', role_title: 'Parish Priest', photo: null, bio: 'Rev. Fr. Michael Okafor is the current Parish Priest of St. Joseph Catholic Church. He was ordained in 2008 and has served in various parishes in the Archdiocese of Lagos. He is passionate about youth and community development.' },
+  { id: 2, full_name: 'Rev. Fr. Anthony Eze', role_type: 'assistant_priest', badge_label: 'Assistant Priest 1', role_title: 'Assistant Parish Priest', photo: null, bio: 'Rev. Fr. Anthony Eze was ordained in 2015 and has been serving as Assistant Parish Priest since 2022. He oversees the youth ministry and helps with pastoral care in the parish.' },
+  { id: 3, full_name: 'Rev. Fr. Peter Uche', role_type: 'assistant_priest', badge_label: 'Assistant Priest 2', role_title: 'Assistant Parish Priest', photo: null, bio: 'Rev. Fr. Peter Uche was ordained in 2018 and joined St. Joseph Parish in 2023. He supports the parish priest in spiritual guidance, sacramental preparation and the sick visitation ministry.' },
+  { id: 4, full_name: 'Mr. John Odu', role_type: 'catechist', badge_label: 'Catechist', role_title: 'Catechist', photo: null, bio: 'Mr. John Odu has been a catechist for over 15 years. He coordinates catechism classes for children, youth and adults, helping them grow in faith and in understanding of the Catholic Church.' },
+]
+export const parishGlance = { founded_year: '1965', patron_saint: 'St. Joseph', archdiocese: 'Lagos Archdiocese' }
+export const officialsList = [
+  { id: 1, full_name: 'Mrs. Becca Akinola', role_title: 'Catechist Coordinator', phone: '+234 803 123 4567', photo: null },
+  { id: 2, full_name: 'Mrs. Beatrice Daniels', role_title: 'Church Secretary', phone: '+234 806 987 6543', photo: null },
+  { id: 3, full_name: 'Mr. Chinedu Obi', role_title: 'Church Manager', phone: '+234 807 456 7890', photo: null },
+  { id: 4, full_name: 'Mr. Samuel Ibe', role_title: 'Treasurer', phone: '+234 804 321 0987', photo: null },
+]
+// Society leadership will become fields on the Society model in the backend.
+export const societyLeaders = [
+  { id: 1, short_name: 'CWO', full_name: 'Catholic Women Organisation', leader_name: 'Mrs. Ngozi Dozie', leader_role: 'Leader', photo: null },
+  { id: 2, short_name: 'CMO', full_name: 'Catholic Men Organisation', leader_name: 'Mr. Peter Eze', leader_role: 'Leader', photo: null },
+  { id: 3, short_name: 'CYON', full_name: 'Catholic Youth Organisation of Nigeria', leader_name: 'Mr. Emeka Okoro', leader_role: 'Leader', photo: null },
+]
+export const liturgicalBanner = { heading: 'Liturgical Calendar', text: 'The liturgical calendar guides our prayer, celebrates the life of Christ and helps us live the seasons of the Church year.' }
+export const scriptureCycleText = 'We follow the three-year cycle (A, B, C) of Sunday readings.'
+export const closingQuote = { text: 'One Lord, One Faith, One Baptism.', source: 'Ephesians 4:5' }
+
 export const massSchedule = {
   sunday_masses: [
     { label: 'First Mass', time: '6:30 AM' },
@@ -62,7 +91,7 @@ export const infoBarItems = [
     title: 'Opening Hours',
     text: 'Church opens daily from 6:00 AM to 7:00 PM',
     link_label: 'Plan a visit',
-    link_url: '/about',
+    link_url: '/contact',
     icon: 'clock',
   },
   {

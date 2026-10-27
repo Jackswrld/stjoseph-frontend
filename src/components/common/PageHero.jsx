@@ -15,7 +15,7 @@ function handleAnchorClick(event, target) {
 }
 
 // Renders a reusable image hero for inner pages with optional actions and quote.
-function PageHero({ image, eyebrow, title, subtitle, buttons = [], quote }) {
+function PageHero({ image, eyebrow, title, subtitle, buttons = [], quote, showQuoteOnMobile = false }) {
   const reduceMotion = useReducedMotion()
   const item = reduceMotion
     ? {}
@@ -28,7 +28,7 @@ function PageHero({ image, eyebrow, title, subtitle, buttons = [], quote }) {
     <section className="page-hero">
       <img src={image} alt="" aria-hidden="true" />
       <div className="page-hero__overlay" />
-      <div className="page-hero__inner">
+      <div className={`page-hero__inner${showQuoteOnMobile ? ' page-hero__inner--quote-mobile' : ''}`}>
         <motion.div
           className="page-hero__content"
           initial={reduceMotion ? false : 'hidden'}

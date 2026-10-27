@@ -1,0 +1,96 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.about-page { @include container; padding-top: 64px; overflow: hidden; }
+.about-clergy { padding-bottom: 58px; }
+.section-header { margin-bottom: 12px; }
+
+.section-header h2 { position: relative; padding-bottom: 12px; }
+.section-header h2::after { position: absolute; left: 0; bottom: 0; width: 54px; height: 3px; border-radius: 4px; background: $color-gold; content: ''; }
+.about-clergy__intro { max-width: 680px; margin-bottom: 28px; color: $color-muted; }
+.about-clergy__intro strong { color: #bd8514; }
+.about-clergy__layout { display: grid; grid-template-columns: minmax(0, 3fr) minmax(250px, 1fr); gap: 22px; align-items: stretch; }
+.about-clergy__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.clergy-card { overflow: hidden; border: 1px solid $color-border; border-radius: $radius-card; background: #fff; box-shadow: $shadow-card; transition: transform .2s ease, box-shadow .2s ease; &:hover { transform: translateY(-3px); box-shadow: 0 20px 42px rgba(15,35,71,.14); } }
+.clergy-card__photo { position: relative; height: 158px; background: #e8edf4; .avatar { width: 100%; height: 100%; border-radius: 0; font-size: 2.4rem; } }
+.clergy-card__badge { position: absolute; bottom: 9px; left: 9px; border-radius: 30px; padding: 5px 9px; background: $color-gold; color: $color-navy; font-size: .68rem; font-weight: 800; }
+.clergy-card--assistant_priest .clergy-card__badge { background: $color-navy; color: white; }
+.clergy-card__details { padding: 14px; h3 { min-height: 42px; font-size: 1.02rem; } }
+.clergy-card__role { margin: 4px 0 10px; color: #b47c0d; font-size: .82rem; font-weight: 700; }
+.clergy-card__bio { display: -webkit-box; min-height: 100px; overflow: hidden; color: $color-muted; font-size: .78rem; line-height: 1.5; -webkit-box-orient: vertical; -webkit-line-clamp: 5; }
+.clergy-card__bio--open { display: block; }
+.clergy-card__desktop-toggle { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; color: $color-navy; font-size: .82rem; font-weight: 800; }
+.clergy-card__mobile-toggle, .clergy-card__mobile-bio { display: none; }
+.parish-glance { overflow: hidden; border: 1px solid $color-border; border-radius: $radius-card; background: #fff; box-shadow: $shadow-card; }
+.parish-glance__photo { width: 100%; height: 158px; object-fit: cover; }
+.parish-glance__content { padding: 16px; h3 { margin-bottom: 10px; font-size: 1.2rem; } }
+.parish-glance__rows p { display: flex; gap: 9px; align-items: flex-start; padding: 8px 0; border-top: 1px solid $color-border; color: $color-muted; font-size: .74rem; svg { flex: 0 0 auto; color: $color-gold; } strong { display: block; margin-top: 2px; color: $color-navy; font-size: .83rem; } }
+.parish-glance__history { display: flex; justify-content: center; align-items: center; gap: 8px; min-height: 40px; margin-top: 8px; border: 1px solid $color-gold; border-radius: 30px; color: $color-navy; font-size: .85rem; font-weight: 800; }
+.about-page__people { display: grid; grid-template-columns: 1.1fr .9fr; gap: 20px; padding: 18px 0 64px; }
+.officials-panel, .leaders-panel { min-width: 0; border: 1px solid $color-border; border-radius: $radius-card; padding: 22px; background: #fff; box-shadow: $shadow-card; }
+.officials-panel .section-header h2, .leaders-panel .section-header h2 { font-size: 1.65rem; }
+.officials-panel__intro, .leaders-panel__intro { min-height: 44px; margin: 10px 0 20px; color: $color-muted; font-size: .87rem; }
+.officials-panel__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.official-card { display: flex; flex-direction: column; align-items: center; padding: 12px 5px; text-align: center; h3 { margin: 8px 0 3px; font-family: $font-body; font-size: .83rem; } p { min-height: 34px; color: $color-muted; font-size: .72rem; } a { display: inline-flex; align-items: center; gap: 4px; margin-top: 7px; color: $color-navy; font-size: .68rem; font-weight: 700; } }
+.avatar { display: grid; place-items: center; width: 68px; height: 68px; border-radius: 50%; object-fit: cover; background: #e9edf3; color: $color-navy; font-weight: 800; }
+.leaders-panel__heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; .section-header { flex: 1; } > a { display: flex; align-items: center; gap: 4px; flex: 0 0 auto; margin-top: 5px; color: $color-navy; font-size: .75rem; font-weight: 800; } }
+.leaders-panel__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; }
+.leader-card { position: relative; display: flex; flex-direction: column; align-items: center; min-height: 160px; padding: 12px 6px; border: 1px solid $color-border; border-radius: 10px; text-align: center; .avatar { width: 48px; height: 48px; } p { min-height: 31px; margin: 7px 0 2px; color: $color-muted; font-size: .66rem; line-height: 1.25; } strong { font-size: .72rem; } > span:last-child { margin-top: 3px; color: $color-muted; font-size: .68rem; } }
+.leader-card__short { position: absolute; top: 24px; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; background: $color-navy; color: $color-gold; font-size: .68rem; font-weight: 900; }
+.leader-card--more { justify-content: center; gap: 7px; color: $color-navy; font-size: .76rem; .leader-card__more-icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: $color-navy; color: $color-gold; font-size: 1.5rem; } > span:last-child { display: flex; align-items: center; color: $color-navy; } }
+.liturgical-section { display: grid; grid-template-columns: 1.05fr 1fr .85fr; gap: 24px; min-height: 330px; margin: 8px calc((1180px - 100vw)/2) 34px; padding: 34px max(24px, calc((100vw - 1180px)/2)); background: $color-navy; color: #fff; }
+.liturgical-section__intro { align-self: stretch; padding: 24px; background-size: cover; background-position: center; h2 { color: #fff; font-size: 1.85rem; } span, .scripture-cycle__line { display: block; width: 48px; height: 3px; margin: 12px 0; background: $color-gold; } p { color: rgba(255,255,255,.78); font-size: .88rem; line-height: 1.6; } }
+.liturgical-calendar { align-self: center; min-width: 0; header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; h3 { color: #fff; font-family: $font-body; font-size: 1rem; } button { display: grid; place-items: center; width: 32px; height: 32px; border: 1px solid rgba(255,255,255,.25); border-radius: 50%; color: #fff; } } }
+.liturgical-calendar__grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; text-align: center; }
+.liturgical-calendar__weekday { padding: 4px 0; color: rgba(255,255,255,.58); font-size: .65rem; }
+.liturgical-calendar__day { display: grid; place-items: center; align-content: center; min-height: 34px; color: rgba(255,255,255,.88); font-size: .74rem; }
+.liturgical-calendar__day--today > span:first-child { display: grid; place-items: center; width: 25px; height: 25px; border-radius: 50%; background: $color-gold; color: $color-navy; font-weight: 900; }
+.liturgical-calendar__dot { width: 4px; height: 4px; margin-top: 2px; border-radius: 50%; background: #55bd78; }.liturgical-calendar__dot--violet { background: #b8a2ff; }.liturgical-calendar__dot--white { background: #fff4d6; }.liturgical-calendar__dot--red { background: #ed6b6b; }
+.scripture-cycle { align-self: center; h3 { color: #fff; font-family: $font-body; font-size: 1.08rem; } > p { margin: 12px 0; color: rgba(255,255,255,.74); font-size: .82rem; } }
+.scripture-cycle__row { display: grid; grid-template-columns: 68px 1fr auto; gap: 5px; padding: 10px 0; border-top: 1px solid rgba(255,255,255,.14); color: rgba(255,255,255,.72); font-size: .75rem; strong { color: #fff; } em { color: $color-gold; font-size: .65rem; font-style: normal; } &--current strong { color: $color-gold; } }
+.quote-line { display: grid; grid-template-columns: minmax(20px, 1fr) auto minmax(20px, 1fr); align-items: center; gap: 16px; max-width: 760px; margin: 0 auto; padding: 14px 0 54px; text-align: center; > span { height: 2px; background: $color-gold; } blockquote { grid-column: 2; font-family: $font-heading; font-size: 1.45rem; font-style: italic; } figcaption { grid-column: 2; color: $color-muted; font-size: .78rem; } }
+.history-page { @include container; min-height: 70vh; padding-top: 110px; h1 { margin-bottom: 12px; font-size: clamp(2.4rem, 5vw, 3.8rem); } p { margin-bottom: 18px; color: $color-muted; } a { color: $color-navy; font-weight: 800; text-decoration: underline; text-decoration-color: $color-gold; } }
+
+@include tablet {
+  .about-clergy__layout { grid-template-columns: 1fr; }
+  .about-clergy__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .parish-glance { display: grid; grid-template-columns: 1fr 1.5fr; }
+  .parish-glance__photo { height: 100%; min-height: 280px; }
+  .about-page__people { grid-template-columns: 1fr; }
+  .liturgical-section { grid-template-columns: 1fr 1fr; margin-inline: -20px; padding-inline: 20px; }
+  .liturgical-section__intro { grid-column: 1 / -1; min-height: 200px; }
+}
+@include mobile {
+  .about-page { padding-top: 38px; }
+  .about-clergy__intro { margin-bottom: 16px; }
+  .about-clergy__layout { display: flex; flex-direction: column; gap: 14px; }
+  .about-clergy__grid { display: block; overflow: hidden; border: 1px solid $color-border; border-radius: $radius-card; background: #fff; }
+  .about-clergy__grid > div:not(:last-child) .clergy-card { border-bottom: 1px solid $color-border; }
+  .clergy-card { display: grid; grid-template-columns: 58px 1fr 24px; align-items: center; overflow: visible; border: 0; border-radius: 0; box-shadow: none; }
+  .clergy-card:hover { transform: none; box-shadow: none; }
+  .clergy-card__photo { grid-row: 1; grid-column: 1; width: 48px; height: 48px; margin: 12px 0 12px 12px; border-radius: 8px; .avatar { border-radius: 8px; font-size: .9rem; } }
+  .clergy-card__badge { bottom: -5px; left: -3px; padding: 2px 5px; font-size: .5rem; }
+  .clergy-card__details { display: none; }
+  .clergy-card__mobile-toggle { display: flex; grid-row: 1; grid-column: 2 / 4; align-items: center; justify-content: space-between; width: 100%; padding: 12px 12px 12px 8px; text-align: left; svg { transition: transform .2s ease; } &[aria-expanded='true'] svg { transform: rotate(180deg); } }
+  .clergy-card__mobile-name { display: block; color: $color-navy; font-family: $font-heading; font-size: .96rem; font-weight: 800; }
+  .clergy-card__role { display: block; margin: 3px 0 0; font-size: .74rem; }
+  .clergy-card__mobile-bio { grid-row: 2; grid-column: 1 / -1; display: grid; grid-template-rows: 0fr; transition: grid-template-rows .22s ease; > p { overflow: hidden; color: $color-muted; font-size: .82rem; } &--open { grid-template-rows: 1fr; padding: 0 16px 14px; } }
+  .clergy-card__desktop-toggle { display: none; }
+  .parish-glance { display: grid; grid-template-columns: 104px 1fr; padding: 10px; }
+  .parish-glance__photo { height: 100%; min-height: 220px; border-radius: 8px; }
+  .parish-glance__content { padding: 6px 0 0 12px; h3 { font-size: 1rem; } }
+  .parish-glance__history { grid-column: 1 / -1; }
+  .about-page__people { grid-template-columns: 1fr; gap: 14px; padding: 0 0 40px; }
+  .officials-panel, .leaders-panel { padding: 16px; }
+  .officials-panel .section-header h2, .leaders-panel .section-header h2 { font-size: 1.35rem; }
+  .officials-panel__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .leaders-panel__heading { display: block; > a { margin-bottom: 8px; } }
+  .leaders-panel__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .liturgical-section { display: flex; flex-direction: column; gap: 18px; margin: 0 -14px 28px; padding: 22px 14px; }
+  .liturgical-section__intro { min-height: 180px; padding: 18px; }
+  .liturgical-calendar { width: 100%; }
+  .liturgical-calendar__day { min-height: 37px; }
+  .scripture-cycle { width: 100%; }
+  .quote-line { gap: 8px; padding-bottom: 36px; blockquote { font-size: 1.18rem; } }
+  .history-page { min-height: 75vh; padding-top: 54px; }
+}
