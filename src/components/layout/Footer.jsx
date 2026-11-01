@@ -1,6 +1,6 @@
 import { Mail, MapPin, Phone } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import logo from '../../assets/images/Logo.png'
+import logo from '../../assets/images/Logo.jpg'
 import { churchInfo } from '../../data/mockData'
 
 const quickLinks = [

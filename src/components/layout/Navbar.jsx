@@ -1,6 +1,6 @@
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { Menu, Search, X } from 'lucide-react'
-import logo from '../../assets/images/Logo.png'
+import logo from '../../assets/images/Logo.jpg'
 
 const navLinks = [
   { label: 'Home', path: '/' },
