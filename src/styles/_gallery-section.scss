@@ -1,0 +1,162 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.gallery-section {
+  position: relative;
+  margin: 0;
+  padding: 68px 0;
+  background-image: linear-gradient(90deg, rgba($color-navy, 0.96), rgba($color-navy, 0.82) 42%, rgba($color-navy, 0.68)), url('../assets/images/gallery/gallery-banner.png');
+  background-position: center;
+  background-size: cover;
+  color: $color-card;
+
+  &__inner {
+    @include container;
+    display: grid;
+    grid-template-columns: minmax(0, 0.54fr) minmax(0, 1fr);
+    gap: 48px;
+    align-items: center;
+  }
+
+  &__eyebrow {
+    margin-bottom: 10px;
+    color: $color-gold;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    color: $color-card;
+    font-family: $font-heading;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+  }
+
+  &__subtitle {
+    max-width: 410px;
+    margin: 12px 0 24px;
+    color: rgba($color-card, 0.82);
+    line-height: 1.65;
+  }
+
+  &__button {
+    border: 1px solid $color-gold;
+    box-shadow: none;
+
+    &:hover {
+      box-shadow: 0 10px 24px rgba($color-gold, 0.22);
+    }
+  }
+
+  &__loading {
+    display: flex;
+    gap: 14px;
+    margin: 24px 0;
+
+    span {
+      width: 86px;
+      aspect-ratio: 4 / 3;
+      border-radius: 10px;
+      background: rgba($color-card, 0.18);
+      animation: gallery-pulse 1.2s ease-in-out infinite alternate;
+    }
+  }
+
+  &__error p {
+    margin: 14px 0;
+    color: rgba($color-card, 0.86);
+  }
+
+  @include tablet {
+    padding: 54px 0;
+
+    &__inner {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    &__content {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      column-gap: 24px;
+    }
+
+    &__eyebrow,
+    h2,
+    &__subtitle {
+      grid-column: 1;
+    }
+
+    &__button {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+    }
+  }
+
+  @include mobile {
+    padding: 40px 0 44px;
+    background-position: 58% center;
+
+    &__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 20px;
+      width: 100%;
+    }
+
+    &__content {
+      display: contents;
+    }
+
+    &__eyebrow,
+    h2 {
+      width: min(calc(100% - 28px), $container);
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    h2 {
+      margin-top: -14px;
+      font-size: 2rem;
+    }
+
+    &__subtitle {
+      display: none;
+    }
+
+    &__button {
+      order: 6;
+      align-self: center;
+      margin-top: 4px;
+    }
+
+    .gallery-strip {
+      order: 5;
+    }
+
+    &__loading,
+    &__error {
+      order: 4;
+    }
+
+    &__loading,
+    &__error {
+      width: min(calc(100% - 28px), $container);
+      margin-inline: auto;
+    }
+  }
+}
+
+@keyframes gallery-pulse {
+  from { opacity: 0.45; }
+  to { opacity: 0.9; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-section__loading span {
+    animation: none;
+  }
+}

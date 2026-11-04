@@ -1,0 +1,110 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.gallery-strip {
+  position: relative;
+  min-width: 0;
+
+  &__scroller {
+    display: grid;
+    grid-auto-columns: calc((100% - 48px) / 4);
+    grid-auto-flow: column;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 8px 3px 14px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-gold;
+      outline-offset: 4px;
+    }
+  }
+
+  &__card {
+    min-width: 0;
+    overflow: hidden;
+    margin: 0;
+    border: 1px solid rgba($color-card, 0.75);
+    border-radius: 10px;
+    background: $color-card;
+    box-shadow: 0 12px 28px rgba($color-navy, 0.24);
+    scroll-snap-align: start;
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    figcaption {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba($color-gold, 0.8);
+    border-radius: 50%;
+    background: $color-navy;
+    color: $color-gold;
+    transform: translateY(-50%);
+    transition: background 0.25s ease, color 0.25s ease;
+
+    &:hover:not(:disabled) {
+      background: $color-gold;
+      color: $color-navy;
+    }
+
+    &:focus-visible {
+      outline: 3px solid $color-card;
+      outline-offset: 3px;
+    }
+
+    &:disabled {
+      opacity: 0.42;
+      cursor: default;
+    }
+
+    &--previous { left: -18px; }
+    &--next { right: -18px; }
+  }
+
+  @include tablet {
+    &__scroller {
+      grid-auto-columns: calc((100% - 32px) / 3);
+    }
+  }
+
+  @include mobile {
+    width: 100%;
+
+    &__scroller {
+      grid-auto-columns: 70%;
+      gap: 12px;
+      padding-right: 14px;
+      padding-left: 14px;
+    }
+
+    &__arrow {
+      display: none;
+    }
+  }
+}

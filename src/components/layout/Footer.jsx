@@ -2,6 +2,7 @@ import { Mail, MapPin, Phone } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/images/Logo.jpg'
 import { churchInfo } from '../../data/mockData'
+import SocialLinks from './SocialLinks'
 
 const quickLinks = [
   { label: 'Home', path: '/' },
@@ -29,6 +30,7 @@ function Footer() {
           <img src={logo} alt="St. Joseph Catholic Church logo" />
           <h2>{churchInfo.name}</h2>
           <p>{churchInfo.tagline}</p>
+          <SocialLinks links={churchInfo.social_links} />
         </div>
 
         <div>

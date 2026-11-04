@@ -1,6 +1,12 @@
 import harvestImage from '../assets/images/Harvest.png'
 import massImage from '../assets/images/mass announcement.png'
 import societiesImage from '../assets/images/societies.jpg'
+import galleryImage1 from '../assets/images/gallery/gallery-1.jpg'
+import galleryImage2 from '../assets/images/gallery/gallery-2.jpg'
+import galleryImage3 from '../assets/images/gallery/gallery-3.jpg'
+import galleryImage4 from '../assets/images/gallery/gallery-4.jpg'
+import galleryImage5 from '../assets/images/gallery/gallery-5.png'
+import galleryImage6 from '../assets/images/gallery/gallery-6.png'
 
 // Provisional shape. Will be replaced by API data. Names may change when the backend contract is finalized.
 export const churchInfo = {
@@ -9,7 +15,24 @@ export const churchInfo = {
   address: '412 Road, Gowon Estate, Ipaja-Lagos',
   phone: '+234 801 234 5678',
   email: 'info@stjosephcatholic.org',
+  // PASTE YOUR SOCIAL MEDIA URLS HERE. A platform with an empty url is not shown in the footer.
+  social_links: [
+    { id: 'facebook', label: 'Facebook', url: 'https://www.facebook.com/share/g/1F2t8KkW5h/' },
+    { id: 'instagram', label: 'Instagram', url: 'https://www.instagram.com/stjosephgowonestate?vrfl=M2sxaHh2Zmk1bDBp' },
+    { id: 'youtube', label: 'YouTube', url: 'https://www.youtube.com/channel/UCxsRk3sgG50n1W8yHw9_ljQ' },
+    { id: 'tiktok', label: 'TikTok', url: 'https://www.tiktok.com/@stjosephgowonestate?_r=1&_t=ZS-9B6kiQYvMuL' },
+  ],
 }
+
+// Demo data. Will be replaced by the gallery API. image will become a full URL string.
+export const galleryPreview = [
+  { id: 'gallery-1', title: 'Parish celebration', image: galleryImage1, alt_text: 'Parish celebration' },
+  { id: 'gallery-2', title: 'Procession', image: galleryImage2, alt_text: 'Procession' },
+  { id: 'gallery-3', title: 'Community gathering', image: galleryImage3, alt_text: 'Community gathering' },
+  { id: 'gallery-4', title: 'Church celebration', image: galleryImage4, alt_text: 'Church celebration' },
+  { id: 'gallery-5', title: 'Parish event', image: galleryImage5, alt_text: 'Parish event' },
+  { id: 'gallery-6', title: 'Community event', image: galleryImage6, alt_text: 'Community event' },
+]
 
 export const aboutHero = {
   eyebrow: 'ABOUT OUR CHURCH', title: 'Our Church Family',

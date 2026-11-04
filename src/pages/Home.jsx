@@ -1,9 +1,11 @@
 import EventsSection from '../components/home/EventsSection'
+import GallerySection from '../components/home/GallerySection'
 import Hero from '../components/home/Hero'
 import InfoBar from '../components/home/InfoBar'
 import JoinBanner from '../components/home/JoinBanner'
 import NewsSection from '../components/home/NewsSection'
 import SocietiesSection from '../components/home/SocietiesSection'
+import useGalleryPreview from '../hooks/useGalleryPreview'
 import {
   eventsList,
   infoBarItems,
@@ -15,6 +17,7 @@ import {
 
 // Builds the St. Joseph Catholic Church homepage from mock data.
 function Home() {
+  const gallery = useGalleryPreview()
   return (
     <>
       <Hero />
@@ -27,6 +30,7 @@ function Home() {
         <SocietiesSection societies={societiesList} />
         <JoinBanner />
       </div>
+      <GallerySection {...gallery} />
     </>
   )
 }

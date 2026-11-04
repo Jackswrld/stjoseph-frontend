@@ -1,0 +1,38 @@
+@use 'variables' as *;
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    margin: 0;
+    border: 1px solid rgba($color-gold, 0.6);
+    border-radius: 50%;
+    color: $color-card;
+    transition: color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      background: $color-gold;
+      color: $color-navy;
+    }
+
+    &:focus-visible {
+      outline: 3px solid $color-gold;
+      outline-offset: 3px;
+    }
+  }
+}
