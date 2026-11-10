@@ -1,0 +1,8 @@
+@use 'variables' as *;
+
+.gallery-result-count {
+  margin: 26px 0 0;
+  color: $color-muted;
+  font-size: 0.86rem;
+  text-align: center;
+}

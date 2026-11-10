@@ -1,0 +1,55 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.member-login-page {
+  display: grid;
+  place-items: center;
+  min-height: 70vh;
+  padding: 86px 20px;
+
+  &__content {
+    display: grid;
+    justify-items: center;
+    gap: 18px;
+    width: min(100%, 620px);
+    padding: clamp(32px, 7vw, 64px);
+    border: 1px solid $color-border;
+    border-top: 4px solid $color-gold;
+    border-radius: $radius-card;
+    background: $color-card;
+    box-shadow: $shadow-card;
+    text-align: center;
+  }
+
+  h1 {
+    margin: 0;
+    color: $color-navy;
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+
+  p {
+    margin: 0 0 6px;
+    color: $color-muted;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    border: 1px solid $color-gold;
+    border-radius: 999px;
+    padding: 0 22px;
+    background: $color-gold;
+    color: $color-navy;
+    font-weight: 800;
+
+    &:hover { background: transparent; }
+    &:focus-visible { outline: 3px solid $color-navy; outline-offset: 3px; }
+  }
+
+  @include mobile {
+    min-height: 65vh;
+    padding: 56px 14px;
+  }
+}

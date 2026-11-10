@@ -1,5 +1,5 @@
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { Menu, Search, X } from 'lucide-react'
+import { Menu, Search, UserRound, X } from 'lucide-react'
 import logo from '../../assets/images/Logo.jpg'
 
 const navLinks = [
@@ -12,6 +12,8 @@ const navLinks = [
   { label: 'Gallery', path: '/gallery' },
   { label: 'Contact', path: '/contact' },
 ]
+
+const memberLoginLink = { label: 'Member Login', path: '/member-login' }
 
 // Shows the desktop nav and the mobile menu trigger.
 function Navbar({ isOpen, onClose, onToggle }) {
@@ -38,9 +40,9 @@ function Navbar({ isOpen, onClose, onToggle }) {
           <button className="navbar__icon-button" type="button" aria-label="Search">
             <Search size={20} />
           </button>
-          <button className="navbar__login" type="button">
-            Member Login
-          </button>
+          <Link className="navbar__login" to={memberLoginLink.path}>
+            {memberLoginLink.label}
+          </Link>
         </div>
 
         <button className="navbar__mobile-search" type="button" aria-label="Search">
@@ -64,6 +66,14 @@ function Navbar({ isOpen, onClose, onToggle }) {
             {link.label}
           </NavLink>
         ))}
+        <NavLink
+          className="navbar__mobile-login"
+          to={memberLoginLink.path}
+          onClick={onClose}
+        >
+          <UserRound size={18} aria-hidden="true" />
+          {memberLoginLink.label}
+        </NavLink>
       </div>
     </header>
   )

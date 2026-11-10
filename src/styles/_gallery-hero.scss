@@ -1,0 +1,46 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.page-hero--gallery {
+  min-height: 440px;
+  background: $color-navy;
+
+  .page-hero__overlay {
+    background: linear-gradient(90deg, rgba($color-navy, 0.88), rgba($color-navy, 0.52) 58%, rgba($color-navy, 0.2));
+  }
+
+  .page-hero__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    &::after {
+      width: 48px;
+      height: 2px;
+      background: $color-gold;
+      content: '';
+    }
+  }
+
+  .page-hero__subtitle { max-width: 610px; }
+
+  @include mobile {
+    min-height: 365px;
+    overflow: visible;
+
+    .page-hero__inner { min-height: inherit; }
+    .page-hero__subtitle { font-style: italic; }
+
+    &::after {
+      position: absolute;
+      z-index: 2;
+      right: 0;
+      bottom: -1px;
+      left: 0;
+      height: 15px;
+      background: $color-gold;
+      clip-path: polygon(0 35%, 10% 75%, 20% 40%, 30% 85%, 40% 40%, 50% 78%, 60% 35%, 70% 80%, 80% 38%, 90% 76%, 100% 34%, 100% 100%, 0 100%);
+      content: '';
+    }
+  }
+}

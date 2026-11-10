@@ -3,8 +3,9 @@ import Layout from './components/layout/Layout'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import Events from './pages/Events'
-import Gallery from './pages/Gallery'
+import GalleryPage from './pages/GalleryPage'
 import Home from './pages/Home'
+import MemberLoginPage from './pages/MemberLoginPage'
 import MassSacraments from './pages/MassSacraments'
 import NotFound from './pages/NotFound'
 import ParishNews from './pages/ParishNews'
@@ -24,8 +25,9 @@ function App() {
           <Route path="parish-news" element={<ParishNews />} />
           <Route path="societies" element={<Societies />} />
           <Route path="events" element={<Events />} />
-          <Route path="gallery" element={<Gallery />} />
+          <Route path="gallery" element={<GalleryPage />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="member-login" element={<MemberLoginPage />} />
           <Route path="home" element={<Navigate to="/" replace />} />
           <Route path="*" element={<NotFound />} />
         </Route>
@@ -35,3 +37,4 @@ function App() {
 }
 
 export default App
+

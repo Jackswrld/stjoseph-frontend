@@ -1,0 +1,30 @@
+@use 'variables' as *;
+
+.gallery-message {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  min-height: 150px;
+  align-content: center;
+  padding: 24px;
+  border: 1px solid $color-border;
+  border-radius: $radius-card;
+  background: $color-card;
+  color: $color-muted;
+  text-align: center;
+
+  p { margin: 0; }
+
+  &__button {
+    min-height: 40px;
+    padding: 0 18px;
+    border: 1px solid $color-gold;
+    border-radius: 999px;
+    background: $color-card;
+    color: $color-navy;
+    font-weight: 800;
+
+    &:hover { background: $color-gold; }
+    &:focus-visible { outline: 3px solid $color-navy-soft; outline-offset: 3px; }
+  }
+}

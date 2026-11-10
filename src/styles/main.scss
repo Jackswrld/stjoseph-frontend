@@ -7,6 +7,16 @@
 @use 'social-links';
 @use 'gallery-section';
 @use 'gallery-strip';
+@use 'gallery-page';
+@use 'gallery-filter-bar';
+@use 'gallery-grid';
+@use 'gallery-card';
+@use 'gallery-message';
+@use 'scripture-banner';
+@use 'gallery-hero';
+@use 'gallery-result-count';
+@use 'gallery-lightbox';
+@use 'member-login-page';
 
 .site-main {
   min-height: 100vh;
@@ -164,6 +174,9 @@
   }
 
   &__login {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     min-height: 42px;
     border: 1px solid rgba(255, 255, 255, 0.55);
     border-radius: 999px;
@@ -231,8 +244,28 @@
       }
 
       &--open {
-        max-height: 480px;
+        max-height: 560px;
         padding-bottom: 18px;
+      }
+
+      & .navbar__mobile-login {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        width: 100%;
+        min-height: 44px;
+        margin-top: 8px;
+        border: 1px solid $color-gold;
+        border-radius: 999px;
+        padding: 10px 16px;
+        color: $color-gold;
+        text-align: center;
+
+        &:focus-visible {
+          outline: 3px solid $color-gold;
+          outline-offset: 3px;
+        }
       }
     }
   }

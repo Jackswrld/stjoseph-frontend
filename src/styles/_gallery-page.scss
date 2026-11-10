@@ -1,0 +1,44 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.gallery-page {
+  padding: 42px 0 72px;
+
+  &__inner {
+    @include container;
+  }
+
+  &__load-more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 46px;
+    margin: 8px auto 0;
+    padding: 0 22px;
+    border: 1px solid $color-gold;
+    border-radius: 999px;
+    background: transparent;
+    color: $color-navy;
+    font-weight: 800;
+    transition: background 0.2s ease, color 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background: $color-gold;
+    }
+
+    &:focus-visible {
+      outline: 3px solid $color-navy-soft;
+      outline-offset: 3px;
+    }
+
+    &:disabled {
+      cursor: wait;
+      opacity: 0.7;
+    }
+  }
+
+  @include mobile {
+    padding: 28px 0 44px;
+  }
+}

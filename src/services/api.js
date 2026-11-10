@@ -27,3 +27,15 @@ export async function apiFetch(path, options = {}) {
 
   return data
 }
+
+// Loads gallery categories from the configured API base URL.
+export function getGalleryCategories({ signal } = {}) {
+  return apiFetch('/gallery/categories/', { signal })
+}
+
+// Loads one page of gallery images, optionally filtered by category slug.
+export function getGalleryImages({ category, page = 1, signal } = {}) {
+  const params = new URLSearchParams({ page: String(page) })
+  if (category) params.set('category', category)
+  return apiFetch(`/gallery/images/?${params.toString()}`, { signal })
+}

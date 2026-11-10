@@ -22,7 +22,7 @@ export const churchInfo = {
     { id: 'youtube', label: 'YouTube', url: 'https://www.youtube.com/channel/UCxsRk3sgG50n1W8yHw9_ljQ' },
     { id: 'tiktok', label: 'TikTok', url: 'https://www.tiktok.com/@stjosephgowonestate?_r=1&_t=ZS-9B6kiQYvMuL' },
   ],
-}
+} 
 
 // Demo data. Will be replaced by the gallery API. image will become a full URL string.
 export const galleryPreview = [

@@ -1,0 +1,42 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  > li { min-width: 0; }
+
+  &__skeleton {
+    aspect-ratio: 1.7 / 1;
+    overflow: hidden;
+    border-radius: $radius-card;
+    background: linear-gradient(100deg, #e8edf4 20%, #f5f7fa 38%, #e8edf4 56%);
+    background-size: 220% 100%;
+    animation: gallery-shimmer 1.3s linear infinite;
+  }
+
+  @include tablet {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+
+    &__skeleton { aspect-ratio: 1.45 / 1; }
+  }
+}
+
+@keyframes gallery-shimmer {
+  to { background-position-x: -220%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-grid__skeleton { animation: none; }
+}
