@@ -39,3 +39,15 @@ export function getGalleryImages({ category, page = 1, signal } = {}) {
   if (category) params.set('category', category)
   return apiFetch(`/gallery/images/?${params.toString()}`, { signal })
 }
+
+// Loads one page of events, optionally filtered by when.
+export function getEvents({ page = 1, when, signal } = {}) {
+  const params = new URLSearchParams({ page: String(page) })
+  if (when) params.set('when', when)
+  return apiFetch(`/events/?${params.toString()}`, { signal })
+}
+
+// Loads the full details for one event slug.
+export function getEventDetail(slug, { signal } = {}) {
+  return apiFetch(`/events/${encodeURIComponent(slug)}/`, { signal })
+}

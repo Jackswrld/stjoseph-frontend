@@ -2,7 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import Layout from './components/layout/Layout'
 import About from './pages/About'
 import Contact from './pages/Contact'
-import Events from './pages/Events'
+import EventsPage from './pages/EventsPage'
 import GalleryPage from './pages/GalleryPage'
 import Home from './pages/Home'
 import MemberLoginPage from './pages/MemberLoginPage'
@@ -24,7 +24,7 @@ function App() {
           <Route path="mass-sacraments" element={<MassSacraments />} />
           <Route path="parish-news" element={<ParishNews />} />
           <Route path="societies" element={<Societies />} />
-          <Route path="events" element={<Events />} />
+          <Route path="events" element={<EventsPage />} />
           <Route path="gallery" element={<GalleryPage />} />
           <Route path="contact" element={<Contact />} />
           <Route path="member-login" element={<MemberLoginPage />} />

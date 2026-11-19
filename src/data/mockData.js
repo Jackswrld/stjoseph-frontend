@@ -214,6 +214,9 @@ export const eventsList = [
   },
 ]
 
+// Placeholder only; real counts come from the API after Member Login exists.
+export const mockReactionCounts = { like: 842, love: 421, pray: 372 }
+
 export const societiesList = [
   {
     id: 1,
