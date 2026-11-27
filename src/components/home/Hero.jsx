@@ -43,7 +43,6 @@ function Hero() {
       </motion.div>
       <blockquote className="hero__quote">
         "May St. Joseph, our patron, always guide us."
-        <cite>- St. Joseph Catholic Church</cite>
       </blockquote>
     </section>
   )
